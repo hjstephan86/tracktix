@@ -228,6 +228,34 @@ Hinweise:
 - Laufzeit liegt bei ca. 4–5 Minuten für die gesamte Playwright-Suite
   (94 Tests, headless Chromium).
 
+## Beispieldaten (Seed-Skript)
+
+`scripts/seed_data.py` befüllt die konfigurierte Datenbank (`DATABASE_URL`,
+Standard: `postgresql://tracktix:tracktix@localhost:5432/tracktix`) direkt
+über SQLAlchemy mit realistischen Beispieldaten: 3 Projekte, ~10 Anforderungen,
+8 Personen, 19 Tickets (verschiedene Status/Prioritäten), 15 Commits, 12 Tests
+und mehrere Kommentare je Ticket.
+
+```bash
+# Windows (venv)
+$env:DATABASE_URL = "postgresql://tracktix:tracktix@localhost:5432/tracktix"
+.\venv\Scripts\python.exe -m scripts.seed_data
+
+# Linux/macOS
+export DATABASE_URL=postgresql://tracktix:tracktix@localhost:5432/tracktix
+python -m scripts.seed_data
+```
+
+Das Skript legt fehlende Tabellen automatisch an und bricht ab, falls bereits
+Projekte in der Datenbank vorhanden sind (Schutz gegen doppelte Daten). Um die
+Datenbank komplett zu leeren und neu zu befüllen:
+
+```bash
+python -m scripts.seed_data --reset
+```
+
+`--reset` löscht **alle** Tabelleninhalte unwiderruflich, bevor neu gesät wird.
+
 ## API-Dokumentation
 
 ```
