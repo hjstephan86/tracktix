@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -5,11 +6,12 @@ from .database import init_db
 from .routers import projects, requirements, persons, commits, tests, tickets
 import os
 
-app = FastAPI(title="TrackTix – Requirement Traceability System", version="1.0.0")
-
-@app.on_event("startup")
-def startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     init_db()
+    yield
+
+app = FastAPI(title="TrackTix – Requirement Traceability System", version="1.1.0", lifespan=lifespan)
 
 # API routes
 app.include_router(projects.router,     prefix="/api")
