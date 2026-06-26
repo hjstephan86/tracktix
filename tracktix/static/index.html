@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackTix – Requirement Traceability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div id="app">
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="logo">
+      <span>🎯</span> TrackTix
+    </div>
+    <nav>
+      <a data-page="dashboard" onclick="navigate('dashboard')">
+        <span class="icon">📊</span> Dashboard
+      </a>
+      <a data-page="tickets" onclick="navigate('tickets')">
+        <span class="icon">🎫</span> Tickets
+      </a>
+      <a data-page="requirements" onclick="navigate('requirements')">
+        <span class="icon">📋</span> Anforderungen
+      </a>
+      <a data-page="commits" onclick="navigate('commits')">
+        <span class="icon">📦</span> Git Commits
+      </a>
+      <a data-page="tests" onclick="navigate('tests')">
+        <span class="icon">🧪</span> Tests
+      </a>
+      <a data-page="persons" onclick="navigate('persons')">
+        <span class="icon">👥</span> Personen
+      </a>
+      <a data-page="projects" onclick="navigate('projects')">
+        <span class="icon">📁</span> Projekte
+      </a>
+    </nav>
+
+    <div style="padding:16px 18px;border-top:1px solid var(--border);margin-top:auto">
+      <div class="text-muted text-sm">Traceability</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">
+        Anforderung → Ticket<br>
+        Ticket → Commit → Test
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main id="content">
+    <div id="topbar">
+      <h2 id="topbar-title">Dashboard</h2>
+      <div style="display:flex;align-items:center;gap:14px">
+        <select id="project-filter" style="width:220px">
+          <option value="">Alle Projekte</option>
+        </select>
+        <a href="/docs" target="_blank" class="btn btn-ghost btn-sm">API Docs</a>
+      </div>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:0">
+      <div id="page-dashboard" class="page active"></div>
+      <div id="page-tickets"      class="page"></div>
+      <div id="page-requirements" class="page"></div>
+      <div id="page-commits"      class="page"></div>
+      <div id="page-tests"        class="page"></div>
+      <div id="page-persons"      class="page"></div>
+      <div id="page-projects"     class="page"></div>
+    </div>
+  </main>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
