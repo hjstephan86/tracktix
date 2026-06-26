@@ -1,0 +1,12 @@
+[run]
+source = app
+omit =
+    app/__init__.py
+    app/routers/__init__.py
+
+[report]
+show_missing = true
+skip_empty = true
+
+[html]
+directory = htmlcov

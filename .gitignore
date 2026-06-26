@@ -1,0 +1,7 @@
+venv/
+build/
+src/pyble.egg-info/
+__pycache__/
+*.pyc
+.coverage
+.vscode/

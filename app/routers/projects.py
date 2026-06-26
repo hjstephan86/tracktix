@@ -17,7 +17,9 @@ def list_projects(db: Session = Depends(get_db)):
 def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
     if db.query(Project).filter(Project.key == body.key.upper()).first():
         raise HTTPException(400, "Project key already exists")
-    proj = Project(**body.model_dump(), key=body.key.upper())
+    data = body.model_dump()
+    data["key"] = body.key.upper()
+    proj = Project(**data)
     db.add(proj); db.commit(); db.refresh(proj)
     return proj
 
