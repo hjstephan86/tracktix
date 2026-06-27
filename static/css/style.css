@@ -102,6 +102,7 @@ aside#sidebar {
   border-left: 3px solid transparent;
   transition: background .12s, color .12s;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #sidebar nav a:hover {
